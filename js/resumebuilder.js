@@ -5,7 +5,7 @@ var bio = {
         "mobile": "8902459912",
         "email": "s.zaminder@gmail.com",
         "github": "https://github.com/szam25",
-        "twitter": "yeipeeeee",
+        
         "location": "kolkata",
         "LinkedIn": "https://www.linkedin.com/in/souvik-zaminder-929150ba/"
     },
@@ -97,9 +97,8 @@ bio.display = function() {
     var formattedLocation = HTMLlocation.replace("%data%", bio.contacts.location);
     var formattedgithub = HTMLgithub.replace("%data%", bio.contacts.github);
     var formattedblog = HTMLblog.replace("%data%", bio.contacts.LinkedIn);
-    var formattedtwitter = HTMLtwitter.replace("%data%", bio.contacts.twitter);
 
-    $("#footerContacts, #topContacts").prepend(formattedMobile, formattedEmail, formattedLocation, formattedgithub, formattedblog, formattedtwitter);
+    $("#footerContacts, #topContacts").prepend(formattedMobile, formattedEmail, formattedLocation, formattedgithub,formattedblog);
 
 };
 education.display = function() {
@@ -187,6 +186,3 @@ work.display();
 bio.display();
 education.display();
 projects.display();
-
-
-$("#mapDiv").append(googleMap);
