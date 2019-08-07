@@ -18,6 +18,7 @@ var HTMLheaderRole = '<span>%data%</span><hr>';
 var HTMLcontactGeneric = '<li class="flex-item"><span class="orange-text">%contact%</span><span class="white-text">%data%</span></li>';
 var HTMLmobile = '<li class="flex-item"><span class="orange-text">mobile</span><span class="white-text">%data%</span></li>';
 var HTMLemail = '<li class="flex-item"><span class="orange-text">email</span><span class="white-text">%data%</span></li>';
+
 var HTMLgithub = '<li class="flex-item"><span class="orange-text">github</span><span class="white-text">%data%</span></li>';
 var HTMLblog = '<li class="flex-item"><span class="orange-text">LinkedIn</span><span class="white-text">%data%</span></li>';
 var HTMLlocation = '<li class="flex-item"><span class="orange-text">location</span><span class="white-text">%data%</span></li>';
@@ -110,7 +111,11 @@ function initializeMap() {
     disableDefaultUI: true
   };
 
-
+  /*
+  For the map to be displayed, the googleMap var must be
+  appended to #mapDiv in resumeBuilder.js.
+  */
+  
   /*
   locationFinder() returns an array of every location string from the JSONs
   written for bio, education, and work.
@@ -218,7 +223,7 @@ function initializeMap() {
   }
 
   // Sets the boundaries of the map based on pin locations
-  window.mapBounds = new google.maps.LatLngBounds();
+
 
   // locations is an array of location strings returned from locationFinder()
   locations = locationFinder();
@@ -232,3 +237,13 @@ function initializeMap() {
 /*
 Uncomment the code below when you're ready to implement a Google Map!
 */
+
+// Calls the initializeMap() function when the page loads
+window.addEventListener('load', initializeMap);
+
+// Vanilla JS way to listen for resizing of the window
+// and adjust map bounds
+window.addEventListener('resize', function(e) {
+  //Make sure the map bounds get updated on page resize
+map.fitBounds(mapBounds);
+});
